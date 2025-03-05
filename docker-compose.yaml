@@ -29,18 +29,18 @@ services:
     networks:
       - monitoring
 
-  # tempo:
-  #   image: grafana/tempo:latest
-  #   container_name: tempo
-  #   command: [ "-config.file=/etc/tempo.yaml" ]
-  #   volumes:
-  #     - ./tempo-config.yaml:/etc/tempo.yaml
-  #   ports:
-  #     - "3200:3200" # Tempo gRPC
-  #     - "4317:4317" # OTLP gRPC
-  #     - "4318:4318" # OTLP HTTP
-  #   networks:
-  #     - monitoring
+  tempo:
+    image: grafana/tempo:latest
+    container_name: tempo
+    command: [ "-config.file=/etc/tempo.yaml" ]
+    volumes:
+      - ./tempo-config.yaml:/etc/tempo.yaml
+    ports:
+      - "3200:3200" # Tempo gRPC
+      - "4317:4317" # OTLP gRPC
+      - "4318:4318" # OTLP HTTP
+    networks:
+      - monitoring
 
   loki:
     image: grafana/loki:latest
