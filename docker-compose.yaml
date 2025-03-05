@@ -15,8 +15,8 @@ services:
       - OTEL_EXPORTER_OTLP_ENDPOINT=http://tempo:4318
       - OTEL_SERVICE_NAME=go-app
       - OTEL_TRACES_SAMPLER=always_on
-    depends_on:
-      - tempo
+    # depends_on:
+    #   - tempo
   
   # k6 Load Testing Service
   k6:
@@ -29,18 +29,18 @@ services:
     networks:
       - monitoring
 
-  tempo:
-    image: grafana/tempo:latest
-    container_name: tempo
-    command: [ "-config.file=/etc/tempo.yaml" ]
-    volumes:
-      - ./tempo-config.yaml:/etc/tempo.yaml
-    ports:
-      - "3200:3200" # Tempo gRPC
-      - "4317:4317" # OTLP gRPC
-      - "4318:4318" # OTLP HTTP
-    networks:
-      - monitoring
+  # tempo:
+  #   image: grafana/tempo:latest
+  #   container_name: tempo
+  #   command: [ "-config.file=/etc/tempo.yaml" ]
+  #   volumes:
+  #     - ./tempo-config.yaml:/etc/tempo.yaml
+  #   ports:
+  #     - "3200:3200" # Tempo gRPC
+  #     - "4317:4317" # OTLP gRPC
+  #     - "4318:4318" # OTLP HTTP
+  #   networks:
+  #     - monitoring
 
   loki:
     image: grafana/loki:latest
@@ -87,7 +87,7 @@ services:
       - "3000:3000"
     depends_on:
       - prometheus
-      - tempo
+      # - tempo
       - loki
     networks:
       - monitoring
