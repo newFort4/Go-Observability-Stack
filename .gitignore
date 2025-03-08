@@ -1,3 +1,6 @@
 logs
 
 .env
+
+# Ignore the alertmanager configuration file. Use alertmanager.template.yml and replace values in this directory instead.
+alertmanager.yml

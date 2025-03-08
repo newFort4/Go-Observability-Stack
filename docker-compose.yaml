@@ -34,9 +34,6 @@ services:
   alertmanager:
     image: prom/alertmanager:latest
     container_name: alertmanager
-    environment:
-      - TELEGRAM_TOKEN=${TELEGRAM_TOKEN}
-      - TELEGRAM_CHAT_ID=${TELEGRAM_CHAT_ID}
     volumes:
       - ./alertmanager.yml:/etc/alertmanager/alertmanager.yml
     command:
