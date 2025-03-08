@@ -4,7 +4,7 @@ services:
   # Go application service
   app:
     build:
-      context: .
+      context: ./app
     ports:
       - "8080:8080"
     networks:
