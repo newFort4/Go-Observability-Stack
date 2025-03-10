@@ -1,4 +1,6 @@
+# Volumes
 logs
+grafana_data
 
 .env
 

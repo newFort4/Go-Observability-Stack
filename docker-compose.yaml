@@ -104,6 +104,9 @@ services:
       - prometheus
       - tempo
       - loki
+    volumes:
+      - ./grafana/datasources.yaml:/etc/grafana/provisioning/datasources/datasources.yaml
+      - ./grafana_data:/var/lib/grafana
     networks:
       - monitoring
 
