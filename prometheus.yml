@@ -5,6 +5,12 @@ scrape_configs:
   - job_name: "go-app"
     static_configs:
       - targets: ["app:8080"]
+  - job_name: "envoy"
+    metrics_path: /stats
+    params:
+        format: ['prometheus']
+    static_configs:
+      - targets: ["envoy:9901"]
 
 alerting:
   alertmanagers:

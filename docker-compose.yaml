@@ -18,6 +18,20 @@ services:
     depends_on:
       - tempo
 
+  # Envoy proxy service
+  envoy:
+    image: envoyproxy/envoy:v1.29-latest
+    container_name: envoy
+    ports:
+      - "9901:9901"   # Envoy admin interface
+      - "8081:8081"   # Example listener port
+    volumes:
+      - ./envoy.yaml:/etc/envoy/envoy.yaml
+    depends_on:
+      - app
+    networks:
+      - monitoring
+
   # Prometheus service
   prometheus:
     image: prom/prometheus:latest
@@ -31,6 +45,8 @@ services:
       - monitoring
     depends_on:
       - alertmanager
+      - app
+      - envoy
 
   alertmanager:
     image: prom/alertmanager:latest
