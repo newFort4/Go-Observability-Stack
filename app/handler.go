@@ -22,7 +22,21 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
 	r.Response.ContentLength = int64(len(name) + 8)
 
-	// Generate a random duration between 100ms and 500ms
-	sleepDuration := time.Duration(rand.Intn(401)+100) * time.Millisecond
+	randomWait()
+}
+
+func randomWait() {
+	// Generate a random percentile (0-99)
+	p := rand.Intn(100)
+	var sleepDuration time.Duration
+	switch {
+	case p < 90:
+		sleepDuration = time.Duration(rand.Intn(451)+0) * time.Millisecond
+	case p < 95:
+		sleepDuration = time.Duration(rand.Intn(450)+451) * time.Millisecond
+	default:
+		// Top 1%: 1001ms to 1200ms (simulate rare slow requests)
+		sleepDuration = time.Duration(rand.Intn(501)+901) * time.Millisecond
+	}
 	time.Sleep(sleepDuration)
 }

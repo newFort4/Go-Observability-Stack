@@ -1,11 +1,11 @@
 groups:
   - name: example_alerts
     rules:
-      - alert: HighCPUUsage
-        expr: process_cpu_seconds_total > 1
-        for: 1m
-        labels:
-          severity: critical
-        annotations:
-          summary: "CPU usage is too high"
-          description: "CPU usage is over 1 second for 5 minutes."
+      # - alert: HighCPUUsage
+      #   expr: process_cpu_seconds_total > 1
+      #   for: 1m
+      #   labels:
+      #     severity: critical
+      #   annotations:
+      #     summary: "CPU usage is too high"
+      #     description: "CPU usage is over 1 second for 5 minutes."

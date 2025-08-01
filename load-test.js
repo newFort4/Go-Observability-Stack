@@ -3,9 +3,9 @@ import { check } from 'k6';
 import { randomString } from 'https://jslib.k6.io/k6-utils/1.4.0/index.js';
 
 export let options = {
-    vus: 10,           // Virtual Users
+    vus: 20,           // Virtual Users
     duration: '30m',   // Test duration
-    rps: 30            // Requests per second
+    rps: 20            // Requests per second
 };
 
 
